@@ -1,0 +1,22 @@
+version: '3'
+services:
+  nginx:
+    image: nginx
+    depends_on:
+      - website1
+      - website2
+      - website3
+    ports:
+      - 8888:80
+  website1:
+    build: ./
+    environment:
+      - PORT=8080
+  website2:
+    build: ./
+    environment:
+      - PORT=8081
+  website3:
+    build: ./
+    environment:
+      - PORT=8082
