@@ -1,0 +1,125 @@
+{
+  "swagger":"2.0",
+   
+    "info": {
+        "version": "1.0.0",
+        "title": "REST API",
+        "description": ""
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+        "/api/1.0/whistlist/amount/{id}": {
+            "get": {
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/1.0/whistlist": {
+            "post": {
+                "description": "",
+                "operationId": "addtowhist",
+                "produces": [
+                  "application/json"
+             
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "product ID",
+                        "description": "product you want to add to whistlist.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/payload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "description": "",
+                "parameters": [
+                  {
+                      "in": "body",
+                      "name": "product ID",
+                      "description": "product you want to add to whistlist.",
+                      "required": true,
+                      "schema": {
+                          "$ref": "#/definitions/payload"
+                      }
+                  }
+              ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "get": {
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/1.0/whistlist/trending/{n}": {
+            "get": {
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "n",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    },
+    "securityDefinitions": {
+      "bearerAuth": {
+        "name": "Authorization",
+        "in": "header",
+        "type": "apiKey",
+        "description": "JWT Authorization header"
+      }
+    },
+    "security": [ { "bearerAuth": [] } ],
+    "definitions": {
+        "payload": {
+            "type": "object",
+            "properties": {
+                "productId": {
+                  "default":"201807202150",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
